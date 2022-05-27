@@ -14,6 +14,7 @@ namespace TimeSheet.Controllers
     public class DashboardController : Controller
     {
         Context c = new Context();
+       
         public IActionResult Index(string Response)
         {
             if (string.IsNullOrEmpty(Response))
@@ -21,6 +22,7 @@ namespace TimeSheet.Controllers
                 ViewBag.response = null;
             }
             ViewBag.response = Response;
+           
             return View();
         }
         [HttpPost]
@@ -46,11 +48,7 @@ namespace TimeSheet.Controllers
         }
 
 
-        public List<Models.Task> allTasksbyUser(string userName)
-        {
-            var allList = c.Tasks.Where(x => x.Username == userName).ToList();
-            return allList;
-        }
+        
 
 
         public async Task<IActionResult> LogOut()
